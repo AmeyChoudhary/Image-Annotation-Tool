@@ -321,13 +321,16 @@ router.post('/add_dataset', (req, res) => {
 router.put("/add_label/:dataset_name", async (req, res) => {
     try {
         var dataset_name = req.params.dataset_name;
+        // this is actually user_id
         var labels = req.body.labels; // labels will be an array of objects
         var user_id = getUserId(req);
         var dataset_id = null;
 
-        if (dataset_name) {
-            dataset_id = await fetchDatasetId(dataset_name, user_id);
-        }
+        // if (dataset_name) {
+        //     dataset_id = await fetchDatasetId(dataset_name, user_id);
+        // }
+
+        dataset_id = dataset_name;
 
         if (dataset_id) {
             for (let label of labels) {
@@ -382,8 +385,10 @@ router.get("/get_image_user_annotations/:image_id", async (req, res) => {
 // gets all labels for a particular dataset
 router.get("/get_images_labels/:dataset_name", async (req, res) => {
     try {
-        var dataset_name = req.params.dataset_name;
-        var user_id = getUserId(req);
+        // dataset_name is actually dataset_id
+        var dataset_id = req.params.dataset_name;
+        var dataset_name = await fetchDatasetName(dataset_id);
+        var user_id = await fetchUserIdfromDatasetId(dataset_id);
         // sql query to get labels for a particular dataset
         let query = `SELECT * FROM Dataset_label INNER JOIN Dataset_name ON Dataset_label.dataset_id = Dataset_name.dataset_id WHERE Dataset_name.dataset_name = '${dataset_name}' AND Dataset_name.dataset_created_by = '${user_id}'`;
         execSql(query)
@@ -551,5 +556,32 @@ async function fetchDatasetId(dataset_name, user_id) {
         throw err;
     }
 }
+
+async function fetchDatasetName(dataset_id){
+    let query = `SELECT dataset_name FROM Dataset_name WHERE dataset_id = '${dataset_id}'`;
+    try {
+        const result = await execSql(query);
+        console.log(result[0].dataset_name + ":from fetchDatasetName");
+        return result[0].dataset_name;
+    } catch (err) {
+        console.log("Error: ", err);
+        throw err;
+    }
+}
+
+async function fetchUserIdfromDatasetId(dataset_id){
+    let query = `SELECT dataset_created_by FROM Dataset_name WHERE dataset_id = '${dataset_id}'`;
+    try {
+        const result = await execSql(query);
+        console.log(result[0].dataset_created_by + ":from fetchUserIdfromDatasetId");
+        return result[0].dataset_created_by;
+    } catch (err) {
+        console.log("Error: ", err);
+        throw err;
+    }
+}
+
+
+
 
 module.exports = router;

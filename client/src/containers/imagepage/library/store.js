@@ -47,8 +47,8 @@ const [useStore] = create(set => ({
   setServer : server => set({server}),
 
   labels : [
-    { id: 1, name: 'Cancer cell', color: 'Red' },
-    { id: 2, name: 'Normal cell', color: 'Blue' }
+    // { id: 1, name: 'Cancer cell', color: 'Red' },
+    // { id: 2, name: 'Normal cell', color: 'Blue' }
   ],
   setLabels : labels => set(state => ({ labels })),
 

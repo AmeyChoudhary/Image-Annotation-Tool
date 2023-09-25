@@ -124,9 +124,11 @@ export default (props) => {
   }, [image, width, height, setScale, setImageSize, setSize]);
   // const setScale = useStore((state) => state.setScale);
   const layerRef = React.useRef(null);
+  const image_width = '70px'
+  const image_height = '70px'
   return (
     <Layer ref={layerRef}>
-      <Image image={image} />
+      <Image image={image} style={{width:"10vw", height:"10vh"}} />
     </Layer>
   );
 };

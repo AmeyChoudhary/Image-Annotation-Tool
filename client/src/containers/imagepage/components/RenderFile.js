@@ -11,7 +11,7 @@ import { createRef } from "react";
 import ToolBox from "./toolbox/ToolBox";
 import LabelBox from "./labelbox/LabelBox";
 import { Container, Row, Col, Nav, Navbar } from "react-bootstrap";
-
+import TopBar from "./topBar/TopBar";
 function RenderFile(props) {
     const [viewerImage, setViewerImage] = useState();
     const [imageName, setImageName] = useState();
@@ -92,6 +92,7 @@ function RenderFile(props) {
     const stageRef = createRef();
     return (
         <div className="render-file-container">
+
             <div className="button-container">
                 {allImageName.map((file, i) => {
                     const buttonStyles = {
@@ -117,39 +118,47 @@ function RenderFile(props) {
                     );
                 })}
             </div>
-            <div className="viewer-container">
-                {viewerImage ?
-                    <StageContextProvider stageRef={stageRef}>
 
-
-                        <div style={{ width: '113%' }}>
-                            {/* <TopBar image_indx={image_indx} user_type={user_type} /> */}
-                        </div>
-                        <Row>
-                            <Col xs={10}>
-                                <div style={{ width: '102%', overflow: 'hidden' }}>
-                                    <Row>
-                                        <span style={{ width: "50vw", height: '80vh', overflow: 'hidden', position: 'absolute' }}>
-                                            <ToolBox  />
-                                        </span>
-                                        <span style={{ overflow: 'hidden', marginTop: '5px', marginLeft: '55px', width: window.innerWidth, height: window.innerHeight, maxHeight: window.innerHeight }} className="right-panel">
-                                            <Canvas imageURL = {viewerImage} />
-                                        </span>
-                                    </Row>
-                                </div>
-                            </Col>
-                            <Col xs={2}>
-                                <div style={{ overflow: 'hidden', display: 'flex', justifyContent: 'flex-end' }}>
-                                    <Row>
-                                        <LabelBox />
-                                    </Row>
-                                </div>
-                            </Col>
-                        </Row>
-                    </StageContextProvider>
-                    : <p>Select an image to view</p>}
+            <div className="viewer-container" style={{ width: '100vw', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgb(218,235,250)', textAlign: 'center', overflow: 'hidden', flex: '100%' }}>
+                <div className="viewer" style={{ width: '100%', height: '100%' }}>
+                    {viewerImage ?
+                        <StageContextProvider stageRef={stageRef}>
+                            <div style={{ width: '113%' }}>
+                                <TopBar  />
+                            </div>
+                            <Row >
+                                <span style={{ width: "50vw", height: '80vh', overflow: 'hidden', position: 'absolute' }}>
+                                    <ToolBox />
+                                </span>
+                                <Col xs={10}>
+                                    <div style={{ width: '100%', overflow: 'hidden' }}>
+                                        <Row>
+                                            <span style={{ width: "50vw", height: '100vh', overflow: 'hidden', position: 'absolute' }}>
+                                                <ToolBox />
+                                            </span>
+                                            <span style={{ overflow: 'hidden', marginTop: '5px', marginLeft: '55px', width: '100vw', height: '100vh', maxHeight: '100vh' }} className="right-panel">
+                                                <Canvas imageURL={viewerImage} />
+                                            </span>
+                                        </Row>
+                                    </div>
+                                </Col>
+                                <Col xs={2}>
+                                    <div style={{ overflow: 'hidden', display: 'flex', justifyContent: 'flex-end' }}>
+                                        <Row>
+                                            <LabelBox />
+                                        </Row>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </StageContextProvider>
+                        : <p>Select an image to view</p>}
+                </div>
             </div>
+
         </div>
+
+
+
     )
 }
 

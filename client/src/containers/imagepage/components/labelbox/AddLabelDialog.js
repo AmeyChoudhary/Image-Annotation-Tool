@@ -8,8 +8,9 @@ function AddLabelDialog(props) {
     const setLabels = useStore((state) => state.setLabels);
     const  handleSubmit = async (e) =>  {
         e.preventDefault();
-      
-        let url = server + "/posts/add_label/" + "amey_test"
+        // use dataset id instead of name from window location
+        let url = server + "/posts/add_label/" + window.location.pathname.split('/')[2]
+        console.log(url)
         // change above to dataset name when doing general
         let newlabels = [...labels]
         let label = {name:e.target.label.value,color:e.target.color.value};

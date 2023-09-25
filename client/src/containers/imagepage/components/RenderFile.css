@@ -1,6 +1,7 @@
 .render-file-container {
     display: flex;
     width: 100vw;
+    height: 100vh;
 }
   
 
@@ -30,11 +31,7 @@
 }
 
 .viewer-container {
-    flex: 75%;
-    background-color: rgb(218, 235, 250);
-    flex-grow: 1; 
-    text-align: center;
-    height: 100%;
+    
 }
 
 .viewer-container p {
