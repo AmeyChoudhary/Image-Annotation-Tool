@@ -3,7 +3,7 @@
     width: 100vw;
     height: 100vh;
 }
-  
+
 
 .button-container {
     flex: 25%;
@@ -13,7 +13,7 @@
     /* justify-content: space-around; */
     gap: 40px;
     margin: 20px;
-    
+
 }
 
 #image-name {
@@ -30,15 +30,16 @@
     color: red;
 }
 
-.viewer-container {
-    
-}
+.viewer-container {}
 
 .viewer-container p {
-    text-align: center; 
-    font-size: 25px; /* Set the font size */
-    color: #333; /* Set the text color */
-    margin: 20px 0; /* Add some margin around the paragraph */
+    text-align: center;
+    font-size: 25px;
+    /* Set the font size */
+    color: #333;
+    /* Set the text color */
+    margin: 20px 0;
+    /* Add some margin around the paragraph */
 }
 
 .name-del {

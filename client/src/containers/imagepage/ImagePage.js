@@ -6,7 +6,7 @@ import { config } from './config';
 import { useParams } from 'react-router-dom';
 
 
-function ImagePage(){
+function ImagePage() {
   const [currentFile, setCurrentFile] = useState({
     count: 0,
     name: ""
@@ -52,7 +52,7 @@ function ImagePage(){
     <div className="App">
       <div className='main-btn'>
         <div className="form-container">
-          <form>
+          <form className='ml-4'>
             <input type="file" id="fileInput" onChange={handleChange} className="input-file" />
             <button type="submit" onClick={uploadFile} className="upload-button">Upload</button>
           </form>

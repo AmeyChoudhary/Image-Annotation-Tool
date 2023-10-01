@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { USER_STATE } from "../../withAuth";
 import { NavItemWithDropdown } from "./NavItemWithDropdown";
 
-export const navItemRenderer = (navItemConfig, pathname, userLoginState, isDropDown=false) => {
+export const navItemRenderer = (navItemConfig, pathname, userLoginState, isDropDown = false) => {
   if (
     navItemConfig.permissions === USER_STATE.ADMIN &&
     userLoginState !== USER_STATE.ADMIN
@@ -15,7 +15,7 @@ export const navItemRenderer = (navItemConfig, pathname, userLoginState, isDropD
     return null;
 
   return navItemConfig.options?.length ? (
-    <NavItemWithDropdown navItemConfig={navItemConfig} pathname={pathname} isDropDown={isDropDown}/>
+    <NavItemWithDropdown navItemConfig={navItemConfig} pathname={pathname} isDropDown={isDropDown} />
   ) : (
     <Link
       className={
@@ -34,6 +34,8 @@ export const getLogoutButton = (navigate) => (
     type="button"
     onClick={(e) => {
       localStorage.removeItem("dfs-user");
+      localStorage.removeItem("regions");
+      localStorage.removeItem("history");
       return navigate("/sign-in");
     }}
   >

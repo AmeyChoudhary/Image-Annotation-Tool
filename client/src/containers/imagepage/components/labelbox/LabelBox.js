@@ -12,10 +12,22 @@ let clabels = [
     { name: 'Normal cell', color: 'Blue' }
 ];
 let selected = null
+
 function LabelBox() {
     const dataset = useStore((state) => state.dataset);
     const labels = useStore((state) => state.labels);
+    const history = useStore((state) => state.history);
+    const fillinside = useStore((state) => state.fillinside);
+    const setFillinside = useStore((state) => state.setFillinside);
+    const setPointcolor = useStore((state) => state.setPointcolor);
+    const setPointwidth = useStore((state) => state.setPointwidth);
+    const setLinewidth = useStore((state) => state.setLinewidth);
+    const setRegionopacity = useStore((state) => state.setRegionopacity);
     const setLabels = useStore((state) => state.setLabels);
+    const setRegions = useStore((state) => state.setRegions);
+    const historySelected = useStore((state) => state.historySelected);
+    const setHistorySelected = useStore((state) => state.setHistorySelected);
+
 
     const color = useStore((state) => state.color);
     const setColor = useStore((state) => state.setColor);
@@ -44,7 +56,7 @@ function LabelBox() {
         // console.log(response.json()['list']);
         // setLables(response.json()['list'])
     };
-    
+
     useEffect(() => {
         handleLoad();
     }, []);
@@ -75,7 +87,71 @@ function LabelBox() {
                 </div>
             </div>
             <AddLabelDialog addLabel={addLabel} dataset={dataset} />
-            <SetUserId />
+            <div className="labelbox" style={{ fontFamily: "Roboto", fontSize: '0.9em' }}>
+                <legend style={{ fontFamily: "Roboto" }}>History</legend>
+                <div className="radio-item-container">
+                    {(history.length) ? history.map((option, index) => (
+                        <div
+                            key={index}
+                            className={`${index === historySelected ? 'bg-white' : ''
+                                } `
+                            }
+                            onClick={() => {
+                                setRegions(history[index])
+                                setHistorySelected(index);
+                            }}
+                        >
+                            <span>&emsp; </span> &nbsp; {"Version : " + (index + 1)}
+                        </div>
+                    )) : null}
+                </div>
+            </div>
+            {/* <AddLabelDialog addLabel={addLabel} dataset={dataset} /> */}
+            {/* <SetUserId /> */}
+            <div className=''>
+                <label className='text-black text-sm'>Fill Inside</label>
+                <select className='ml-2' onChange={(e) => { setFillinside(e.target.value) }}>
+                    <option value={1}>Yes</option>
+                    <option value={0} selected>No</option>
+                </select>
+            </div>
+            <div className='mt-2'>
+                <label className='text-black text-sm'>Point width</label>
+                <select className='ml-2' onChange={(e) => { setPointwidth(e.target.value) }}>
+                    <option value={1}>1</option>
+                    <option value={2} selected>2</option>
+                    <option value={3} >3</option>
+                    <option value={4} >4</option>
+                    <option value={5}>5</option>
+                    <option value={6} >6</option>
+                </select>
+            </div>
+            <div className='mt-2'>
+                <label className='text-black text-sm'>Line width</label>
+                <select className='ml-2' onChange={(e) => { setLinewidth(e.target.value) }}>
+                    <option value={1}>1</option>
+                    <option value={2} >2</option>
+                    <option value={3} selected>3</option>
+                    <option value={4} >4</option>
+                    <option value={5} >5</option>
+                    <option value={6} >6</option>
+                </select>
+            </div>
+            <div className='mt-2'>
+                <label className='text-black text-sm'>Opacity</label>
+                <select className='ml-2' onChange={(e) => setRegionopacity(e.target.value)}>
+                    <option value='0.1'>0.1</option>
+                    <option value='0.2'>0.2</option>
+                    <option value='0.3' selected>0.3</option>
+                    <option value='0.4'>0.4</option>
+                    <option value='0.5'>0.5</option>
+                    <option value='0.6'>0.6</option>
+                    <option value='0.7'>0.7</option>
+                    <option value='0.8'>0.8</option>
+                    <option value='0.9'>0.9</option>
+                    <option value='1'>1</option>
+                </select>
+            </div>
         </React.Fragment>
     );
 }

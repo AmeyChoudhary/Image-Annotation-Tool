@@ -30,6 +30,7 @@
     "react-content-loader": "^6.2.1",
     "react-dom": "^18.1.0",
     "react-drag-drop-files": "^2.3.7",
+    "react-dropdown": "^1.11.0",
     "react-icons": "^4.4.0",
     "react-ipynb-renderer": "^1.0.2",
     "react-konva": "^18.2.10",

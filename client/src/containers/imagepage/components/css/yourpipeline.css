@@ -1,0 +1,63 @@
+
+#yourpipeline {
+    padding-top: 130px;
+  }
+  
+  
+  .about-us .section-heading {
+    margin-bottom: 40px;
+  }
+  
+  .about-us .left-image {
+    margin-right: 45px;
+  }
+  
+  .about-us .about-item h4 {
+    font-size:38px;
+    font-weight: 800;
+    color:#088ec3;
+  }
+  
+  .about-us .about-item h6 {
+    font-size: 16px;
+    margin-top: 5px;
+    font-weight: 400;
+    color: #2a2a2a;
+    text-transform: capitalize;
+  }
+  
+  .about-us p {
+    margin: 40px 0px;
+  }
+  
+  #comp-list {
+    margin-left: 10px;
+    /* list-style-image: url('sqpurple.gif'); */
+    color:#088ec3;
+    font-size: 18px;
+  }
+  
+  #comp-list li{
+    padding-bottom: 8px;
+  }
+
+  #bid{
+    display: inline-block;
+    background-color: #33ccc5;
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    text-transform: capitalize;
+    padding: 10px 22px;
+    border-radius: 23px;
+    letter-spacing: 0.25px;
+    border-bottom: 2px solid #4771cb!important;
+    transition: all .3s;
+    margin-left: 33px;
+  }
+  
+  #bid:hover{
+    background-color: #4771cb!important;
+    color: #fff!important;
+    border-bottom: 2px solid #33ccc5!important;
+  }

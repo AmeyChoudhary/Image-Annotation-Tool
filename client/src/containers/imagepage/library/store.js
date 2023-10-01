@@ -19,6 +19,28 @@ const [useStore] = create(set => ({
   regions: [],
   setRegions: regions => set(state => ({ regions })),
 
+  fillinside: false,
+  setFillinside: fillinside => set({ fillinside }),
+
+  regionopacity: 0.3,
+  setRegionopacity: regionopacity => set({ regionopacity }),
+
+  pointwidth: 2,
+  setPointwidth: pointwidth => set({ pointwidth }),
+
+  linewidth: 3,
+  setLinewidth: linewidth => set({ linewidth }),
+
+  pointcolor: "black",
+  setPointcolor: pointcolor => set({ pointcolor }),
+
+
+  history: [],
+  setHistory: history => set(state => ({ history })),
+
+  historySelected: [],
+  setHistorySelected: historySelected => set(state => ({ historySelected })),
+
   isMouseOverStartPoint: 0,
   setIsMouseOverStartPoint: isMouseOverStartPoint => set(state => ({ isMouseOverStartPoint })),
 
@@ -31,62 +53,62 @@ const [useStore] = create(set => ({
   selectedRigionId: null,
   selectRegion: selectedRigionId => set({ selectedRigionId }),
 
-  tool : {id:0},
-  setTool : tool => set({tool}),
-  
+  tool: { id: 0 },
+  setTool: tool => set({ tool }),
+
   checkList: [],
   setCheckList: checkList => set(state => ({ checkList })),
-  
-  color : "black",
-  setColor : color => set({color}),
 
-  dataset : "cancer",
-  setDataset : dataset => set({dataset}),
+  color: "black",
+  setColor: color => set({ color }),
 
-  server : "http://localhost:3031",
-  setServer : server => set({server}),
+  dataset: "cancer",
+  setDataset: dataset => set({ dataset }),
 
-  labels : [
+  server: "http://localhost:3031",
+  setServer: server => set({ server }),
+
+  labels: [
     // { id: 1, name: 'Cancer cell', color: 'Red' },
     // { id: 2, name: 'Normal cell', color: 'Blue' }
   ],
-  setLabels : labels => set(state => ({ labels })),
+  setLabels: labels => set(state => ({ labels })),
 
   imageList: [],
   setImageList: imageList => set(state => ({ imageList })),
-  
+
   userList: [],
   setUserList: userList => set(state => ({ userList })),
 
-  currUser : "",
-  setCurrUser : currUser => set({currUser}),
+  currUser: "",
+  setCurrUser: currUser => set({ currUser }),
 
-  currImage : "black",
-  setCurrImage : currImage => set({currImage}),
+  currImage: "black",
+  setCurrImage: currImage => set({ currImage }),
 
-  adminMode : false,
-  setAdminMode : adminMode => set({adminMode}),
+  adminMode: false,
+  setAdminMode: adminMode => set({ adminMode }),
 
   annotaionsList: [],
   setAnnotaionsList: annotaionsList => set(state => ({ annotaionsList })),
 
-  imageIndex : 0,
-  setImageIndex : index => set( state => ({index})),
+  imageIndex: 0,
+  setImageIndex: index => set(state => ({ index })),
 
-  selectedRegions : new Set(),
-  setSelectedRegions : selectedRegions => set(state => (new Set(selectedRegions))),
+  selectedRegions: new Set(),
+  setSelectedRegions: selectedRegions => set(state => (new Set(selectedRegions))),
 
 
-  stageScale : {
+  stageScale: {
     x: 0,
     y: 0,
     scaleX: 1,
     scaleY: 1
   },
-  setStageScale : stageScale => set({stageScale}),
+  setStageScale: stageScale => set({ stageScale }),
 
-  orignalScale : {},
-  setOrignalScale : orignalScale => set({orignalScale}),
+  orignalScale: {},
+  setOrignalScale: orignalScale => set({ orignalScale }),
 
   brightness: 0,
   setBrightness: brightness => set({ brightness })

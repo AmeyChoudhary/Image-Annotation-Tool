@@ -24,13 +24,13 @@ function SetUserId(props) {
         <React.Fragment>
             <form >
                 <Row>
-                    <Col xs={2}><label>User:</label></Col>
+                    {/* <Col xs={2}><label>User:</label></Col>
                     <Col xs={1}>
                         <input style={{ margin: 9 }} onChange={handleChangeAdmin} type="checkbox" name="isAdmin" data-tool-tip="isAdmin"></input>
                     </Col>
                     <Col xs={8}>
                         <input style={{ width: 80, margin: 4 }} onChange={handleChangeUserID} type="text" id="userId" name="userId" />
-                    </Col>
+                    </Col> */}
                 </Row>
             </form>
         </React.Fragment>
